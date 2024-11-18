@@ -1,0 +1,335 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={DumbDeseq: RNA Expression Software - R Project},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{DumbDeseq: RNA Expression Software - R Project}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "D:/HackBio/R_Course_and_Project"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"D:/HackBio/R\_Course\_and\_Project"}\NormalTok{)}
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "D:/HackBio/R_Course_and_Project"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{link\_to\_dataset }\OtherTok{=} \StringTok{"https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt"}
+
+\NormalTok{DumbDeseq }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\AttributeTok{file =}\NormalTok{ link\_to\_dataset, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Generating the summary of
+Datasets}\label{generating-the-summary-of-datasets}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(DumbDeseq)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Gene           log2FoldChange          pvalue            padj          
+##  Length:16406       Min.   :-2.129000   Min.   :0.0000   Min.   :0.0003053  
+##  Class :character   1st Qu.:-0.178875   1st Qu.:0.2771   1st Qu.:0.9994000  
+##  Mode  :character   Median :-0.007856   Median :0.5393   Median :0.9994000  
+##                     Mean   :-0.035081   Mean   :0.5208   Mean   :0.9763603  
+##                     3rd Qu.: 0.136675   3rd Qu.:0.7735   3rd Qu.:0.9994000  
+##                     Max.   : 1.540000   Max.   :1.0000   Max.   :1.0000000
+\end{verbatim}
+
+\subsubsection{Write to a CSV file}\label{write-to-a-csv-file}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write.csv}\NormalTok{(DumbDeseq, }\StringTok{"DumbDeseq.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(DumbDeseq)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Gene log2FoldChange    pvalue      padj
+## 1    DOK6         0.5100 1.861e-08 0.0003053
+## 2    TBX5        -2.1290 5.655e-08 0.0004191
+## 3 SLC32A1         0.9003 7.664e-08 0.0004191
+## 4  IFITM1        -1.6870 3.735e-06 0.0068090
+## 5   NUP93         0.3659 3.373e-06 0.0068090
+## 6 EMILIN2         1.5340 2.976e-06 0.0068090
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ DumbDeseq}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Volcano Plot}\label{volcano-plot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Prepare data for the plot}
+\NormalTok{neg\_log10\_pvalue }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FunctionTok{log10}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{pvalue)}
+
+\CommentTok{\# Create the base plot}
+\FunctionTok{plot}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{log2FoldChange, neg\_log10\_pvalue,}
+     \AttributeTok{col =} \StringTok{"gray"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.7}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Log2 Fold Change"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"{-}Log10(p{-}value)"}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Volcano Plot"}\NormalTok{)}
+
+\CommentTok{\# Highlight upregulated genes (Log2FC \textgreater{} 1 and pvalue \textless{} 0.01)}
+\FunctionTok{points}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{log2FoldChange[data}\SpecialCharTok{$}\NormalTok{log2FoldChange }\SpecialCharTok{\textgreater{}} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.01}\NormalTok{],}
+\NormalTok{       neg\_log10\_pvalue[data}\SpecialCharTok{$}\NormalTok{log2FoldChange }\SpecialCharTok{\textgreater{}} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.01}\NormalTok{],}
+       \AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.7}\NormalTok{)}
+
+\CommentTok{\# Highlight downregulated genes (Log2FC \textless{} {-}1 and pvalue \textless{} 0.01)}
+\FunctionTok{points}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{log2FoldChange[data}\SpecialCharTok{$}\NormalTok{log2FoldChange }\SpecialCharTok{\textless{}} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.01}\NormalTok{],}
+\NormalTok{       neg\_log10\_pvalue[data}\SpecialCharTok{$}\NormalTok{log2FoldChange }\SpecialCharTok{\textless{}} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.01}\NormalTok{],}
+       \AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DumbDeseq_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\subsubsection{Top 5 Upregulated Genes}\label{top-5-upregulated-genes}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{upregulated\_genes }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(data, log2FoldChange }\SpecialCharTok{\textgreater{}} \DecValTok{1} \SpecialCharTok{\&}\NormalTok{ pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.01}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(upregulated\_genes[}\FunctionTok{order}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{upregulated\_genes}\SpecialCharTok{$}\NormalTok{log2FoldChange), ], }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Gene log2FoldChange    pvalue     padj
+## 21   DTHD1          1.540 5.594e-05 0.043710
+## 6  EMILIN2          1.534 2.976e-06 0.006809
+## 30    PI16          1.495 1.297e-04 0.077940
+## 35 C4orf45          1.288 2.472e-04 0.115900
+## 75 FAM180B          1.249 1.146e-03 0.239900
+\end{verbatim}
+
+\subsubsection{The functions of Top Upregualated
+Genes}\label{the-functions-of-top-upregualated-genes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  DTHD1 - DTHD1 (Death Domain Containing 1) is a Protein Coding gene.
+  Diseases associated with DTHD1 include Aniridia 1 and Leber Plus
+  Disease. An important paralog of this gene is PSMD10.
+\item
+  EMILIN2 - EMILIN2 (Elastin Microfibril Interfacer 2) is a Protein
+  Coding gene. Diseases associated with EMILIN2 include Lichen Nitidus
+  and Epidermolytic Acanthoma. Among its related pathways are Elastic
+  fibre formation and Extracellular matrix organization. Gene Ontology
+  (GO) annotations related to this gene include extracellular matrix
+  constituent conferring elasticity. An important paralog of this gene
+  is EMILIN1.
+\item
+  PI16 - PI16 (Peptidase Inhibitor 16) is a Protein Coding gene.
+  Diseases associated with PI16 include Corneal Dystrophy, Meesmann, 1
+  and Epiphyseal Dysplasia, Multiple, 1. Gene Ontology (GO) annotations
+  related to this gene include peptidase inhibitor activity.
+\item
+  C4orf45 - Aliases for SPMIP2 Gene. SPMIP2 (Sperm Microtubule Inner
+  Protein 2) is a Protein Coding gene. Diseases associated with SPMIP2
+  include Hyperekplexia.
+\item
+  FAM180B - FAM180B (Family With Sequence Similarity 180 Member B) is a
+  Protein Coding gene. Diseases associated with FAM180B include
+  Borderline Leprosy and Mosaic Variegated Aneuploidy Syndrome. An
+  important paralog of this gene is FAM180A.
+\end{enumerate}
+
+\subsubsection{Top 5 Downregulated
+Genes}\label{top-5-downregulated-genes}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{downregulated\_genes }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(data, log2FoldChange }\SpecialCharTok{\textless{}} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{\&}\NormalTok{ pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.01}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(downregulated\_genes[}\FunctionTok{order}\NormalTok{(downregulated\_genes}\SpecialCharTok{$}\NormalTok{log2FoldChange), ], }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Gene log2FoldChange    pvalue      padj
+## 2     TBX5         -2.129 5.655e-08 0.0004191
+## 4   IFITM1         -1.687 3.735e-06 0.0068090
+## 10     TNN         -1.658 8.973e-06 0.0147200
+## 12 COL13A1         -1.647 1.394e-05 0.0159200
+## 13  IFITM3         -1.610 1.202e-05 0.0159200
+\end{verbatim}
+
+\subsubsection{The functions of Top Downregualated
+Genes}\label{the-functions-of-top-downregualated-genes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  TBX5 - TBX5 (T-Box Transcription Factor 5) is a Protein Coding gene.
+  Diseases associated with TBX5 include Holt-Oram Syndrome and Atrial
+  Septal Defect 1. Among its related pathways are Gene expression
+  (Transcription) and Cardiac conduction. Gene Ontology (GO) annotations
+  related to this gene include DNA-binding transcription factor activity
+  and transcription factor binding. An important paralog of this gene is
+  TBX4.
+\item
+  IFITM1 - IFITM1 (Interferon Induced Transmembrane Protein 1) is a
+  Protein Coding gene. Diseases associated with IFITM1 include Influenza
+  and West Nile Virus. Among its related pathways are Cytokine Signaling
+  in Immune system and Antiviral mechanism by IFN-stimulated genes. Gene
+  Ontology (GO) annotations related to this gene include obsolete signal
+  transducer activity, downstream of receptor. An important paralog of
+  this gene is IFITM3.
+\item
+  TNN - TNN (Tenascin N) is a Protein Coding gene. Diseases associated
+  with TNN include Seckel Syndrome and Lipodystrophy, Congenital
+  Generalized, Type 1. Among its related pathways are PI3K-Akt signaling
+  pathway and Extracellular matrix organization. Gene Ontology (GO)
+  annotations related to this gene include identical protein binding and
+  integrin binding. An important paralog of this gene is TNC.
+\item
+  COL13A1 - COL13A1 (Collagen Type XIII Alpha 1 Chain) is a Protein
+  Coding gene. Diseases associated with COL13A1 include Myasthenic
+  Syndrome, Congenital, 19 and Presynaptic Congenital Myasthenic
+  Syndromes. Among its related pathways are Collagen chain trimerization
+  and Integrin Pathway. Gene Ontology (GO) annotations related to this
+  gene include heparin binding. An important paralog of this gene is
+  COL7A1.
+\item
+  IFITM3 - IFITM3 (Interferon Induced Transmembrane Protein 3) is a
+  Protein Coding gene. Diseases associated with IFITM3 include
+  Influenza, Severe and Influenza. Among its related pathways are
+  Cytokine Signaling in Immune system and Antiviral mechanism by
+  IFN-stimulated genes. An important paralog of this gene is IFITM2.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,102 @@
+---
+title: "DumbDeseq: RNA Expression Software - R Project"
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+```{r}
+getwd()
+setwd("D:/HackBio/R_Course_and_Project")
+getwd()
+```
+
+
+```{r}
+link_to_dataset = "https://gist.githubusercontent.com/stephenturner/806e31fce55a8b7175af/raw/1a507c4c3f9f1baaa3a69187223ff3d3050628d4/results.txt"
+
+DumbDeseq <- read.table(file = link_to_dataset, header = TRUE)
+```
+
+### Generating the summary of Datasets
+
+```{r}
+summary(DumbDeseq)
+```
+
+### Write to a CSV file
+
+```{r}
+write.csv(DumbDeseq, "DumbDeseq.csv", row.names = FALSE)
+```
+
+
+```{r}
+head(DumbDeseq)
+```
+
+```{r}
+data <- DumbDeseq
+```
+
+### Volcano Plot 
+
+```{r}
+# Prepare data for the plot
+neg_log10_pvalue <- -log10(data$pvalue)
+
+# Create the base plot
+plot(data$log2FoldChange, neg_log10_pvalue,
+     col = "gray", pch = 20, cex = 0.7,
+     xlab = "Log2 Fold Change", ylab = "-Log10(p-value)",
+     main = "Volcano Plot")
+
+# Highlight upregulated genes (Log2FC > 1 and pvalue < 0.01)
+points(data$log2FoldChange[data$log2FoldChange > 1 & data$pvalue < 0.01],
+       neg_log10_pvalue[data$log2FoldChange > 1 & data$pvalue < 0.01],
+       col = "red", pch = 20, cex = 0.7)
+
+# Highlight downregulated genes (Log2FC < -1 and pvalue < 0.01)
+points(data$log2FoldChange[data$log2FoldChange < -1 & data$pvalue < 0.01],
+       neg_log10_pvalue[data$log2FoldChange < -1 & data$pvalue < 0.01],
+       col = "blue", pch = 20, cex = 0.7)
+
+
+```
+
+### Top 5 Upregulated Genes
+
+
+```{r}
+upregulated_genes <- subset(data, log2FoldChange > 1 & pvalue < 0.01)
+head(upregulated_genes[order(-upregulated_genes$log2FoldChange), ], 5)
+
+```
+### The functions of Top Upregualated Genes
+1. DTHD1 - DTHD1 (Death Domain Containing 1) is a Protein Coding gene. Diseases associated with DTHD1 include Aniridia 1 and Leber Plus Disease. An important paralog of this gene is PSMD10.  
+
+2. EMILIN2 - EMILIN2 (Elastin Microfibril Interfacer 2) is a Protein Coding gene. Diseases associated with EMILIN2 include Lichen Nitidus and Epidermolytic Acanthoma. Among its related pathways are Elastic fibre formation and Extracellular matrix organization. Gene Ontology (GO) annotations related to this gene include extracellular matrix constituent conferring elasticity. An important paralog of this gene is EMILIN1.  
+
+3. PI16 - PI16 (Peptidase Inhibitor 16) is a Protein Coding gene. Diseases associated with PI16 include Corneal Dystrophy, Meesmann, 1 and Epiphyseal Dysplasia, Multiple, 1. Gene Ontology (GO) annotations related to this gene include peptidase inhibitor activity.  
+
+4. C4orf45 - Aliases for SPMIP2 Gene. SPMIP2 (Sperm Microtubule Inner Protein 2) is a Protein Coding gene. Diseases associated with SPMIP2 include Hyperekplexia.  
+
+5. FAM180B - FAM180B (Family With Sequence Similarity 180 Member B) is a Protein Coding gene. Diseases associated with FAM180B include Borderline Leprosy and Mosaic Variegated Aneuploidy Syndrome. An important paralog of this gene is FAM180A.  
+
+
+### Top 5 Downregulated Genes
+
+```{r}
+
+downregulated_genes <- subset(data, log2FoldChange < -1 & pvalue < 0.01)
+head(downregulated_genes[order(downregulated_genes$log2FoldChange), ], 5)
+
+```
+### The functions of Top Downregualated Genes
+1. TBX5 - TBX5 (T-Box Transcription Factor 5) is a Protein Coding gene. Diseases associated with TBX5 include Holt-Oram Syndrome and Atrial Septal Defect 1. Among its related pathways are Gene expression (Transcription) and Cardiac conduction. Gene Ontology (GO) annotations related to this gene include DNA-binding transcription factor activity and transcription factor binding. An important paralog of this gene is TBX4.
+2. IFITM1 - IFITM1 (Interferon Induced Transmembrane Protein 1) is a Protein Coding gene. Diseases associated with IFITM1 include Influenza and West Nile Virus. Among its related pathways are Cytokine Signaling in Immune system and Antiviral mechanism by IFN-stimulated genes. Gene Ontology (GO) annotations related to this gene include obsolete signal transducer activity, downstream of receptor. An important paralog of this gene is IFITM3.
+3. TNN - TNN (Tenascin N) is a Protein Coding gene. Diseases associated with TNN include Seckel Syndrome and Lipodystrophy, Congenital Generalized, Type 1. Among its related pathways are PI3K-Akt signaling pathway and Extracellular matrix organization. Gene Ontology (GO) annotations related to this gene include identical protein binding and integrin binding. An important paralog of this gene is TNC.
+4. COL13A1 - COL13A1 (Collagen Type XIII Alpha 1 Chain) is a Protein Coding gene. Diseases associated with COL13A1 include Myasthenic Syndrome, Congenital, 19 and Presynaptic Congenital Myasthenic Syndromes. Among its related pathways are Collagen chain trimerization and Integrin Pathway. Gene Ontology (GO) annotations related to this gene include heparin binding. An important paralog of this gene is COL7A1.
+5. IFITM3 - IFITM3 (Interferon Induced Transmembrane Protein 3) is a Protein Coding gene. Diseases associated with IFITM3 include Influenza, Severe and Influenza. Among its related pathways are Cytokine Signaling in Immune system and Antiviral mechanism by IFN-stimulated genes. An important paralog of this gene is IFITM2.
